@@ -1,0 +1,14 @@
+{
+  "name": "cloud-fn",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "lint": "yarn eslint --fix",
+    "deploy": "yarn firebase deploy"
+  },
+  "dependencies": {
+    "eslint": "^8.6.0",
+    "firebase-tools": "^10.0.1"
+  }
+}
