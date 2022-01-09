@@ -57,7 +57,7 @@ app.get('/games/:id', async (req, res) => {
 
 app.post('/games', async (req, res) => {
   try {
-    const game = req.body.game
+    const game = req.body
 
     await gamesCollection.add(game)
 
