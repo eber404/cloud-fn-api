@@ -67,6 +67,37 @@ app.post('/games', async (req, res) => {
   }
 })
 
+app.delete('/games/:id', async (req, res) => {
+  try {
+    const id = req.params.id
+    const doc = await gamesCollection.doc(id).get()
+
+    if (!doc.exists) res.status(404).send('game não encontrado')
+
+    await gamesCollection.doc(id).delete()
+
+    return res.status(200).send()
+  } catch (error) {
+    functions.logger.error(error)
+    return res.status(500).send(error)
+  }
+})
+
+app.put('/games/:id', async (req, res) => {
+  try {
+
+    const id = req.params.id
+    const game = req.body
+
+    await gamesCollection.doc(id).update(game)
+
+    return res.status(200).send()
+  } catch (error) {
+    functions.logger.error(error)
+    return res.status(500).send(error)
+  }
+})
+
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //
